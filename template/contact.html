@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %} contact {% endblock title %}
+{% block clink%}active{% endblock clink%}
+{% block body %} 
+{% if messages %}
+      {% for message in messages %}
+      <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        <strong> {{ message }}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      {% endfor %}
+      {% endif %}
+      
+   <div class="container my-5" style="margin:0 auto">
+    <h1 class="text-center">Contact</h1>
+      <form action="contact" method="post">
+         {% csrf_token %}
+         <div class="mb-3">
+            <label for="name" class="form-label" name="name">Enter name</label>
+            <input type="text" class="form-control" id="exampleInputEmail1"  name="name" aria-describedby="emailHelp">
+          </div>
+         <div class="mb-3">
+           <label for="email" class="form-label" name="email">Email address</label>
+           <input type="email" class="form-control" id="exampleInputEmail1"  name="email" aria-describedby="emailHelp">
+           <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+         </div>
+         <div class="mb-3">
+           <label for="number" class="form-label" name="phone">Enter phone number</label>
+           <input type="text" class="form-control" id="exampleInputEmail1"  name="phone" aria-describedby="emailHelp">
+         </div>
+         <div class="mb-3 ">
+           <label for="email" class="form-label" name="email">More about you</label>
+           <textarea name="des" cols="50" rows="6"></textarea>
+         </div>
+   
+         <button type="submit" class="btn btn-primary btn-lg my-3" name="submit">Submit</button>
+       </form>
+   </div>
+{% endblock body %}

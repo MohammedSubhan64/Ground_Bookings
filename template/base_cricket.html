@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- font link form font awesome cdn -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <title> footballbase |{% block title %}{% endblock title %}</title>
+  </head>
+  <body>
+   <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">  
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/" style="font-family: Arial, Helvetica, sans-serif; color:rgb(111, 216, 111);" >BookMYTurf</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/about">About us</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Booking
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="/football">Football</a></li>
+                  <li><a class="dropdown-item" href="/cricket">Cricket</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">More</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/contact" >Contact</a>
+              </li>
+    
+            </ul>
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+
+      {% if messages %}
+      {% for message in messages %}
+      <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        <strong>{{ message }}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      {% endfor %}
+      {% endif %}
+
+      {% block body %}{% endblock body %}
+      <div class="container my-4" style="margin:0 auto;">
+        <h1> Booking Available Today</h1>
+      <!-- slot Booking -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            Cricket Grounds
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <!-- <strong>Available slots </strong> -->
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col"> Ground Name</th>
+                      <th scope="col">10:00am to 12:00pm</th>
+                      <th scope="col">12:00pm to 3:00pm</th>
+                      <th scope="col">3:00pm to 6:00pm</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">Dcc Sports Arena </th>
+                      <td>Available</td>
+                      <td>Available</td>
+                      <td>Available</td>
+                      
+                    </tr>
+                    <tr>
+                      <th scope="row">kCR Cricket Ground</th>
+                      <td>Available</td>
+                      <td>Available</td>
+                      <td>Available</td>
+                       
+                    </tr>
+                    <tr>
+                      <th scope="row">Vijayanand Ground</th>
+                      <td>Available</td>
+                      <td>Available</td>
+                      <td>Available</td>
+                     
+                    </tr>
+                    <tr>
+                      <th scope="row">Grand Arena Sports County</th>
+                      <td>Available</td>
+                      <td>Available</td>
+                      <td>Available</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+          </div>
+        </div>
+      </div>
+      </div>
+  
+    
+      <div class="container my-3">
+        <div class="container">
+          <div class="row">
+              <div class="col-md-6">
+                  <div class="well-block">
+                      <div class="well-title">
+                          <h2> Book a Ground 20% On OFF</h2>
+                      </div>
+                      <form  action="groundbase" method="post">
+                          {% csrf_token %}
+                          <!-- Form start -->
+                          <div class="row">
+                              <div class="col-md-6">
+                                  <div class="form-group">
+                                      <label class="control-label" for="name">Name</label>
+                                      <input id="name" name="name" type="text" placeholder="Name" class="form-control input-md">
+                                  </div>
+                              </div>
+                              <!-- Text input-->
+                              <div class="col-md-6">
+                                  <div class="form-group">
+                                      <label class="control-label" for="email">Email</label>
+                                      <input id="email" name="email" type="text" placeholder="E-Mail" class="form-control input-md">
+                                  </div>
+                              </div>
+                              <!-- Text input-->
+                              <!-- Text input-->
+                              <div class="col-md-6">
+                                  <div class="form-group">
+                                      <label class="control-label" for="number">Phone</label>
+                                      <input id="number" name="number" type="text" placeholder="number" class="form-control input-md">
+                                  </div>
+                              </div>
+                              <!-- Text input-->
+                              <div class="col-md-6">
+                                  <div class="form-group">
+                                      <label class="control-label" for="date">Preferred Date</label>
+                                      <input id="date" name="date" type="date" placeholder="Preferred Date" class="form-control input-md">
+                                  </div>
+                              </div>
+                              <!-- Select Basic -->
+                              <div class="col-md-6">
+                                  <div class="form-group">
+                                      <label class="control-label" for="time">Preferred Time</label>
+                                      <select id="time" name="time" class="form-control">
+                                          <option value="8:00 to 9:00">8:00 to 10:00</option>
+                                          <option value="9:00 to 10:00">10:00 to 12:00</option>
+                                          <option value="10:00 to 1:00">12:00 to 2:00</option>
+                                          <option value="10:00 to 1:00">2:00 to 3:00</option>
+                                      </select>
+                                  </div>
+                              </div>
+                              <!-- Select Basic -->
+                              <div class="col-md-12">
+                                  <div class="form-group">
+                                      <label class="control-label" for="appointmentfor">Book For</label>
+                                      <select id="appointmentfor" name="groundtype" class="form-control">
+                                          <option value="Football Ground">Football </option>
+                                          <option value="Cricket Ground">Cricket</option>
+                                      </select>
+                                  </div>
+                                  <div class="form-group">
+                                      <label class="control-label" for="appointmentfor">Select Ground</label>
+                                      <select id="appointmentfor" name="selectground" class="form-control">
+                                          <option value="cricket Ground">DCC Sports Arena  </option>
+                                          <option value="cricket Ground">kCR Cricket Ground </option>
+                                          <option value="cricket Ground"> Vijayanand Ground </option>
+                                          <option value="cricket Ground">Grand Arena Sports County</option>
+                                      </select>
+                                  </div>
+                              </div>
+                              <!-- Button -->
+                              <div class="col-md-12">
+                                  <button type="submit" name='submit' class="btn btn-primary mx-2 my-3  btn-lg">Book Now</button>
+                                  <button type="button" class="btn btn-outline-success my-3   btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    Scan & pay
+                                   </button> 
+                              </div>
+                          </div>
+                      </form>
+                      <!-- form end -->
+
+         <!-- scan to pay|Button trigger modal -->
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Scan to Pay</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <h3>Google Pay | scan to pay</h3>
+              <img src="static\qrcode.png" width="300" height="200" alt="">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                  <div class="well-block">
+                      <div class="well-title">
+                          <h2>Why Booking  with Us</h2>
+                      </div>
+                      <div class="feature-block">
+                          <div class="feature feature-blurb-text">
+                              <h4 class="feature-title">24/7 Hours Available</h4>
+                              <div class="feature-content">
+                                  <p>Integer nec nisi sed mi hendrerit mattis. Vestibulum mi nunc, ultricies quis vehicula et, iaculis in magnestibulum.</p>
+                              </div>
+                          </div>
+                          <div class="feature feature-blurb-text">
+                              <h4 class="feature-title">Experienced Staff Available</h4>
+                              <div class="feature-content">
+                                  <p>Aliquam sit amet mi eu libero fermentum bibendum pulvinar a turpis. Vestibulum quis feugiat risus. </p>
+                              </div>
+                          </div>
+                          <div class="feature feature-blurb-text">
+                              <h4 class="feature-title">Low Price & Fees</h4>
+                              <div class="feature-content">
+                                  <p>Praesent eu sollicitudin nunc. Cras malesuada vel nisi consequat pretium. Integer auctor elementum nulla suscipit in.</p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+        
+      </div>
+      
+<!-- Footer -->
+<footer class="page-footer font-small blue pt-4 bg-dark my-0">
+
+  <!-- Footer Links -->
+  <div class="container-fluid text-center text-md-left">
+
+    <!-- Grid row -->
+    <div class="row">
+
+      <!-- Grid column -->
+      <div class="col-md-6 mt-md-0 mt-3">
+
+        <!-- Content -->
+        <!-- <h5 class="text-uppercase">Footer Content</h5>
+        <p>Here you can use rows and columns to organize your footer content.</p> -->
+        <img src="static/logo.png" style="width:10rem;" alt="Book My Truf">
+
+      </div>
+      <!-- Grid column -->
+
+      <hr class="clearfix w-100 d-md-none pb-3">
+
+      <!-- Grid column -->
+      <div class="col-md-3 mb-md-0 mb-3">
+
+        <!-- Links -->
+        <h5 class="text-uppercase" style="color: white;"> QUick Links</h5>
+      
+        <ul class="list-unstyled " style="text-decoration: none; color:black; font-weight:bold;"  >
+          <li>
+            <a href="#!">Home</a>
+          </li>
+          <li>
+       
+            <a href="#!">About Us</a>
+          </li>
+          <li>
+
+            <a href="#!">Partner and Events</a>
+          </li>
+          <li>
+            <a href="#!">Careers</a>
+          </li>
+          <li>
+          
+            <a href="#!">Blog</a>
+          </li>
+        </ul>
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-3 mb-md-0 mb-3">
+
+        <!-- Links -->
+        <h5 class="text-uppercase my-3" style="color: white;">Connect Us</h5>
+
+        <ul class="list-unstyled " style="display:flex; justify-content: center;">
+          <li>
+
+            <a href="#!" class="mx-3"><i class="fab fa-facebook fa-2x"></i></a>
+          </li>
+          <li>
+
+            <a href="#!" class="mx-3"><i class="fab fa-instagram fa-2x"></i></a>
+          </li>
+          
+            <a href="#!" class="mx-3"><i class="fab fa-twitter fa-2x"></i></a>
+          </li>
+          <li>
+
+            <a href="#!" class="mx-3"><i class="fab fa-linkedin fa-2x"></i></a>
+          </li>
+        </ul>
+
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row -->
+
+  </div>
+  <!-- Footer Links -->
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">
+    <a href="/"> Copyright © 2010-2021. All Rights are reserved.</a>
+    <!-- <strong style="color: white;"> <i class="fas fa-futbol"></i>  MS Sports</strong> -->
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+
+
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>

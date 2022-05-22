@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<h2>you serached  for </h2>
+{% comment %} {% if searched %}
+    <h1>  gound other of your searche  "{{searched}}"</h1>
+    <br>
+    {% for venue in search_ground%}
+        
+    <a href="{% url 'show-d' %}">{{venue}}</a>
+        <br>
+    {%endfor%}
+{% else %}
+    <h1> you forget to serach for venue</h1>
+{% endif %} {% endcomment %}
+
+
+
+{% endblock content %}

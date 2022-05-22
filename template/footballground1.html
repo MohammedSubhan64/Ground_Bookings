@@ -1,0 +1,85 @@
+{% extends 'groundbase.html' %}
+{% block title %}footballground1{% endblock title %}
+ 
+{% block body %}
+<div class="container my-2" style="margin:0 auto;">
+  <img src="static\playground2.jpg" class="img-fluid " alt="...">
+  <div class="card w-100">
+    <div class="card-body">
+      <h5 class="card-title">Name: <strong>Hotfut</strong></h5>
+      <h5 class="card-title">Location : Gachibowli</h5>
+
+      <a href="https://www.google.com/maps/dir/17.3904334,78.4410889/Hotfut,+Begumpet,+White+House+-+Block+3,+10th+Floor+(Terrace,+Greenlands+Rd,+Kundanbagh+Colony,+Begumpet,+Hyderabad,+Telangana+500016/@17.4143799,78.4323058,14z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x3bcb90b72f1f666f:0xca6f347d560aa9a4!2m2!1d78.4578038!2d17.4355204" class="btn btn-outline-dark" target="true">Ground Location </a>
+    </div>
+  </div>
+      <div class="container my-4" style="margin:0 auto;">
+          <h1> Description</h1>
+          Quality football come closer to work. Yes Hotfut franchise opens their new turf in heart of gachibowli, very near to gachibowli flyover beside Sai Gopichand Badminton Academy. Hotfut turf at gachibowli live up to its expectation, the perfect 5 a side turf with excellent quality FIFA approved turf and perfect for high intensity game of football. Lot of open space for parking and moving around the turf. Well maintained rest rooms, Changing room for boys and girls.
+      </div>
+</div>
+
+<div class="container my-4" style="margin:0 auto;">
+  
+  <div class="accordion" id="accordionExample">
+    {% for t in time%}
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            {{t.newdate}}
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <!-- <strong style="text-align:center;">Available slots </strong>  -->
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col"> Ground Name</th>
+                      <th scope="col">10:00 to 12:00</th>
+                      <th scope="col">12:00 to 3:00</th>
+                      <th scope="col">3:00 to 6:00</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">Hotfut</th>
+                      <td>{{t.c1_t1}}</td>
+                      <td>{{t.c1_t2}}</td>
+                      <td>{{t.c1_t3}}</td>
+                     
+                    </tr>
+                    <tr>
+                      <th scope="row">The Trup</th>
+                      <td>{{t.c2_t1}}</td>
+                      <td>{{t.c2_t2}}</td>
+                      <td>{{t.c2_t3}}</td>
+                    
+                    </tr>
+                    <tr>
+                      <th scope="row">Rampage Football turf</th>
+                      <td>{{t.c3_t1}}</td>
+                      <td>{{t.c3_t2}}</td>
+                      <td>{{t.c3_t3}}</td>
+                      
+                    </tr>
+                    <tr>
+                      <th scope="row">footballground4</th>
+                      <td>{{t.c4_t1}}</td>
+                      <td>{{t.c4_t2}}</td>
+                      <td>{{t.c4_t3}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+        </div>
+      </div>
+      </div>
+
+  {% endfor %}
+</div>
+{% endblock body %}
+
+
+  
+
